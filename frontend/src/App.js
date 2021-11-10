@@ -61,7 +61,7 @@ function App() {
               <i className="fa fa-bars"></i>
             </button>
             <Link className="brand" to="/">
-              amazona
+              UpSeeBuy
             </Link>
           </div>
           <div>
@@ -73,7 +73,7 @@ function App() {
           </div>
           <div>
             <Link to="/cart">
-              Cart
+              Carrito
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}
@@ -85,32 +85,32 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="/profile">User Profile</Link>
+                    <Link to="/profile">Perfil</Link>
                   </li>
                   <li>
-                    <Link to="/orderhistory">Order History</Link>
+                    <Link to="/orderhistory">Pedidos</Link>
                   </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
-                      Sign Out
+                      Salir
                     </Link>
                   </li>
                 </ul>
               </div>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin">Log In</Link>
             )}
             {userInfo && userInfo.isSeller && (
               <div className="dropdown">
                 <Link to="#admin">
-                  Seller <i className="fa fa-caret-down"></i>
+                  Vendedor <i className="fa fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="/productlist/seller">Products</Link>
+                    <Link to="/productlist/seller">Productos</Link>
                   </li>
                   <li>
-                    <Link to="/orderlist/seller">Orders</Link>
+                    <Link to="/orderlist/seller">Pedidos</Link>
                   </li>
                 </ul>
               </div>
@@ -118,20 +118,20 @@ function App() {
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <Link to="#admin">
-                  Admin <i className="fa fa-caret-down"></i>
+                  Administrador <i className="fa fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
-                  <li>
+                  {/* <li>
                     <Link to="/dashboard">Dashboard</Link>
+                  </li> */}
+                  <li>
+                    <Link to="/productlist">Productos</Link>
                   </li>
                   <li>
-                    <Link to="/productlist">Products</Link>
+                    <Link to="/orderlist">Pedidos</Link>
                   </li>
                   <li>
-                    <Link to="/orderlist">Orders</Link>
-                  </li>
-                  <li>
-                    <Link to="/userlist">Users</Link>
+                    <Link to="/userlist">Usuarios</Link>
                   </li>
                 </ul>
               </div>
@@ -141,7 +141,7 @@ function App() {
         <aside className={sidebarIsOpen ? 'open' : ''}>
           <ul className="categories">
             <li>
-              <strong>Categories</strong>
+              <strong>Categorias</strong>
               <button
                 onClick={() => setSidebarIsOpen(false)}
                 className="close-sidebar"
@@ -234,7 +234,7 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center">Todos los derechos reservados</footer>
       </div>
     </BrowserRouter>
   );

@@ -57,26 +57,26 @@ export default function SearchScreen(props) {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <div>{products.length} Results</div>
+          <div>{products.length} Resultados</div>
         )}
         <div>
-          Sort by{' '}
+          Ordenar por{' '}
           <select
             value={order}
             onChange={(e) => {
               props.history.push(getFilterUrl({ order: e.target.value }));
             }}
           >
-            <option value="newest">Newest Arrivals</option>
-            <option value="lowest">Price: Low to High</option>
-            <option value="highest">Price: High to Low</option>
-            <option value="toprated">Avg. Customer Reviews</option>
+            <option value="newest">Más recientes</option>
+            <option value="lowest">Price: menor a mayor</option>
+            <option value="highest">Precio: mayor a menor</option>
+            <option value="toprated">Reseñas</option>
           </select>
         </div>
       </div>
       <div className="row top">
         <div className="col-1">
-          <h3>Department</h3>
+          <h3>Categorías</h3>
           <div>
             {loadingCategories ? (
               <LoadingBox></LoadingBox>
@@ -89,7 +89,7 @@ export default function SearchScreen(props) {
                     className={'all' === category ? 'active' : ''}
                     to={getFilterUrl({ category: 'all' })}
                   >
-                    Any
+                    Todas
                   </Link>
                 </li>
                 {categories.map((c) => (
@@ -106,7 +106,7 @@ export default function SearchScreen(props) {
             )}
           </div>
           <div>
-            <h3>Price</h3>
+            <h3>Precio</h3>
             <ul>
               {prices.map((p) => (
                 <li key={p.name}>
@@ -123,7 +123,7 @@ export default function SearchScreen(props) {
             </ul>
           </div>
           <div>
-            <h3>Avg. Customer Review</h3>
+            <h3>Reseñas</h3>
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -146,7 +146,7 @@ export default function SearchScreen(props) {
           ) : (
             <>
               {products.length === 0 && (
-                <MessageBox>No Product Found</MessageBox>
+                <MessageBox>Producto no encontrado</MessageBox>
               )}
               <div className="row center">
                 {products.map((product) => (
