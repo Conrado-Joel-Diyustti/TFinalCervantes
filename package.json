@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Conrado-Joel-Diyustti/amazonaApp.git"
+    "url": "git+https://github.com/Conrado-Joel-Diyustti/TFinalCervantes.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Conrado-Joel-Diyustti/amazonaApp/issues"
+    "url": "https://github.com/Conrado-Joel-Diyustti/TFinalCervantes/issues"
   },
   "homepage": "https://github.com/Conrado-Joel-Diyustti/amazonaApp#readme",
   "dependencies": {
