@@ -10,6 +10,9 @@ export default function ProfileScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [sellerName, setSellerName] = useState('');
+  const [sellerLogo, setSellerLogo] = useState('');
+  const [sellerDescription, setSellerDescription] = useState('');
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -29,6 +32,11 @@ export default function ProfileScreen() {
     } else {
       setName(user.name);
       setEmail(user.email);
+      if (user.seller) {
+        setSellerName(user.seller.name);
+        setSellerLogo(user.seller.logo);
+        setSellerDescription(user.seller.description);
+      }
     }
   }, [dispatch, userInfo._id, user]);
   const submitHandler = (e) => {
@@ -37,14 +45,24 @@ export default function ProfileScreen() {
     if (password !== confirmPassword) {
       alert('Password and Confirm Password Are Not Matched');
     } else {
-      dispatch(updateUserProfile({ userId: user._id, name, email, password }));
+      dispatch(
+        updateUserProfile({
+          userId: user._id,
+          name,
+          email,
+          password,
+          sellerName,
+          sellerLogo,
+          sellerDescription,
+        })
+      );
     }
   };
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>User Profile</h1>
+          <h1>Perfil de usuario</h1>
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
@@ -58,11 +76,11 @@ export default function ProfileScreen() {
             )}
             {successUpdate && (
               <MessageBox variant="success">
-                Profile Updated Successfully
+                Perfil actualizado
               </MessageBox>
             )}
             <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Nombre</label>
               <input
                 id="name"
                 type="text"
@@ -82,7 +100,7 @@ export default function ProfileScreen() {
               ></input>
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Contraseña</label>
               <input
                 id="password"
                 type="password"
@@ -91,7 +109,7 @@ export default function ProfileScreen() {
               ></input>
             </div>
             <div>
-              <label htmlFor="confirmPassword">confirm Password</label>
+              <label htmlFor="confirmPassword">Confirmar password</label>
               <input
                 id="confirmPassword"
                 type="password"
@@ -99,10 +117,45 @@ export default function ProfileScreen() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></input>
             </div>
+            {user.isSeller && (
+              <>
+                <h2>Vendedor</h2>
+                <div>
+                  <label htmlFor="sellerName">Nombre</label>
+                  <input
+                    id="sellerName"
+                    type="text"
+                    placeholder="Enter Seller Name"
+                    value={sellerName}
+                    onChange={(e) => setSellerName(e.target.value)}
+                  ></input>
+                </div>
+                <div>
+                  <label htmlFor="sellerLogo">Logo</label>
+                  <input
+                    id="sellerLogo"
+                    type="text"
+                    placeholder="Enter Seller Logo"
+                    value={sellerLogo}
+                    onChange={(e) => setSellerLogo(e.target.value)}
+                  ></input>
+                </div>
+                <div>
+                  <label htmlFor="sellerDescription">Descripción</label>
+                  <input
+                    id="sellerDescription"
+                    type="text"
+                    placeholder="Enter Seller Description"
+                    value={sellerDescription}
+                    onChange={(e) => setSellerDescription(e.target.value)}
+                  ></input>
+                </div>
+              </>
+            )}
             <div>
               <label />
               <button className="primary" type="submit">
-                Update
+                Actualizar
               </button>
             </div>
           </>

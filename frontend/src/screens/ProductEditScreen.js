@@ -89,7 +89,7 @@ export default function ProductEditScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Edit Product {productId}</h1>
+          <h1>Editar producto {/* {productId} */}</h1>
         </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
@@ -100,7 +100,7 @@ export default function ProductEditScreen(props) {
         ) : (
           <>
             <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Nombre</label>
               <input
                 id="name"
                 type="text"
@@ -110,7 +110,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="price">Price</label>
+              <label htmlFor="price">Precio</label>
               <input
                 id="price"
                 type="text"
@@ -120,17 +120,17 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="image">Image</label>
+              {/* <label htmlFor="image">Imagen</label> */}
               <input
                 id="image"
-                type="text"
+                type="hidden"
                 placeholder="Enter image"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="imageFile">Image File</label>
+              <label htmlFor="imageFile">Cargar imagen</label>
               <input
                 type="file"
                 id="imageFile"
@@ -143,7 +143,7 @@ export default function ProductEditScreen(props) {
               )}
             </div>
             <div>
-              <label htmlFor="category">Category</label>
+              <label htmlFor="category">Categoría</label>
               <input
                 id="category"
                 type="text"
@@ -153,7 +153,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="brand">Brand</label>
+              <label htmlFor="brand">Marca</label>
               <input
                 id="brand"
                 type="text"
@@ -163,7 +163,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="countInStock">Count In Stock</label>
+              <label htmlFor="countInStock">Cantidad en stock</label>
               <input
                 id="countInStock"
                 type="text"
@@ -173,7 +173,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">Descripción</label>
               <textarea
                 id="description"
                 rows="3"
@@ -186,7 +186,7 @@ export default function ProductEditScreen(props) {
             <div>
               <label></label>
               <button className="primary" type="submit">
-                Update
+                Actualizar
               </button>
             </div>
           </>
